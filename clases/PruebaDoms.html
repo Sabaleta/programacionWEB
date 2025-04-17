@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DOM Demo</title>
+</head>
+<body>
+  <h1 id="titulo">Hola DOM</h1>
+
+  <p class="parrafo">Soy un párrafo 1</p>
+  <p class="parrafo">Soy un párrafo 2</p>
+
+  <button id="agregar">Agregar div</button>
+  <button id="quitar">Quitar div</button>
+
+  <div id="contenedor"></div>
+
+  <script>
+    // 🔍 Selección de elementos
+    const titulo = document.getElementById("titulo");
+    const parrafos = document.getElementsByClassName("parrafo");
+    const botonAgregar = document.querySelector("#agregar");
+    const botonQuitar = document.querySelector("#quitar");
+    const contenedor = document.querySelector("#contenedor");
+
+    // 🎯 Event listener para cambiar el título
+    titulo.addEventListener("click", () => {
+      titulo.textContent = "¡Tocaste el título!";
+    });
+
+    // ➕ Crear y agregar un div nuevo al hacer click
+    botonAgregar.addEventListener("click", () => {
+      const nuevoDiv = document.createElement("div");
+      nuevoDiv.textContent = "Soy un nuevo div";
+      nuevoDiv.setAttribute("class", "caja");
+      contenedor.appendChild(nuevoDiv);
+    });
+
+    // ➖ Eliminar el último div agregado
+    botonQuitar.addEventListener("click", () => {
+      const hijos = contenedor.querySelectorAll(".caja");
+      if (hijos.length > 0) {
+        contenedor.removeChild(hijos[hijos.length - 1]);
+      }
+    });
+
+    // 🔧 Modificar atributos
+    for (let p of parrafos) {
+      p.addEventListener("mouseover", () => {
+        p.setAttribute("style", "color: blue;");
+      });
+      p.addEventListener("mouseout", () => {
+        p.removeAttribute("style");
+      });
+    }
+  </script>
+</body>
+</html>

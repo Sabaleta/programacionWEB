@@ -1,6 +1,8 @@
 <!-- Listas -->
 <ul>
     <li>Elemento de lista desordenada</li>
+    <li>Juancito</li> <!-- Textos -->
+    <li><a href='https://es.wikipedia.org/wiki/Donald_Trump'>El pato</a></li> <!-- links -->
   </ul>
   
   <ol>
@@ -10,28 +12,75 @@
 <!-- Tablas -->
 <table>
     <tr>
+      <th>Encabezado</th> <!-- Table header -->
       <th>Encabezado</th>
-      <th>Encabezado</th>
-    </tr>
+    </tr> <!-- Table row -->
     <tr>
       <td>Dato</td>
-      <td>Dato</td>
+      <td>Dato</td> <!-- Table data -->
     </tr>
   </table>
 
 <!-- Formularios -->
-<form>
-    <label for="nombre">Nombre:</label>
-    <input type="text" id="nombre" />
+<form> <!-- Empieza el formulario -->
+    <label for="nombre">Nombre:</label> <!-- Nombre es la etiqueta visible -->
+    <!-- for 'nombre' conecta el <label> con e input que tiene id='nombre' -->
+      <!-- si hacés click en el texto "Nombre:", el cursor se ponga en el input. -->
+    <input type="text" id="nombre" /> <!-- Caja para escribir texto -->
     
-    <label for="comentario">Comentario:</label>
+    <label for="comentario">Comentario:</label> 
     <textarea id="comentario"></textarea>
   
-    <select>
-      <option value="1">Opción 1</option>
+    <select> <!-- Cajita para elegir -->
+      <option value="1">Opción 1</option>  <!-- Opciones -->
       <option value="2">Opción 2</option>
     </select>
-  
-    <button type="submit">Enviar</button>
+    <!-- Para pedirle una foto al usuario -->
+    <label for="foto">Subí tu foto:</label>
+    <input type="file" id="foto" accept="image/*" />
+    <button type="submit">Enviar</button> <!-- Botón de cierre de form -->
   </form>
 
+
+<!-- DOM: la forma en que JavaScript ve y manipula el HTML. -->
+ <!-- Métodos -->
+
+<!-- getElementById('titulo') -->
+const titulo = document.getElementById("titulo") <!-- Busca un elemento con el 
+id= 'título' -->
+
+<!-- getElementsByClassName("clase") -->
+const items = document.getElementsByClassName("item");
+<!-- Devuelve una colección (HTMLCollection) con todos los elementos que
+  tengan esa clase. -->
+
+<!-- querySelector("selector") -->
+const boton = document.querySelector(".mi-boton");
+<!-- Devuelve el primer elemento que coincida con el selector CSS que pongas. -->
+
+<!-- querySelectorAll("selector") -->
+const parrafos = document.querySelectorAll("p");
+<!-- Devuelve todos los elementos que
+ coincidan con el selector (como una NodeList). -->
+
+ <!-- createElement("etiqueta") -->
+ const nuevoDiv = document.createElement("div");
+ <!-- Crea un elemento nuevo (aún no visible hasta que lo agregás al DOM). -->
+
+ <!-- appendChild(elemento) -->
+ document.body.appendChild(nuevoDiv);
+
+ <!-- removeChild(elemento) -->
+ document.body.removeChild(nuevoDiv);
+
+ <!-- setAttribute("nombre", "valor") -->
+ nuevoDiv.setAttribute("id", "caja");
+
+ <!-- removeAttribute("nombre") -->
+ nuevoDiv.removeAttribute("id");
+
+ <!-- addEventListener("evento", función) -->
+ const boton = document.getElementById("miBoton");
+ boton.addEventListener("click", function() {
+   alert("¡Hiciste click!");
+ });
