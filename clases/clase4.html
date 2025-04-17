@@ -1,0 +1,80 @@
+<!-- Estructura básica de HTML -->
+
+<!DOCTYPE html>
+<html> <!-- Abre y cierra el archivo de html -->
+  <head> <!-- Contiene información no visible (título, metadatos, enlaces a CSS/JS) -->
+    <title>Mi primera página</title> <!-- 	Título que aparece en la pestaña del navegador -->
+    <meta charset="UTF-8" /> <!-- Metadatos (ej. codificación, descripción, keywords) -->
+    <link rel="stylesheet" href="estilos.css" /> <!-- Vincula archivos externos (ej: CSS) -->
+    <script src="script.js"></script> <!-- 	Inserta código JS o lo importa desde un archivo -->
+  </head> 
+  <body> <!-- Todo lo que ve el usuario en la página -->
+    <!-- Contenido visible al usuario -->
+  </body>
+</html>
+
+<!-- Contenedores y estructura semántica -->
+<div></div><!-- Contenedor genérico sin significado semántico -->
+<span></span> <!-- Contenedor inline genérico -->
+<header></header><!-- 	Cabecera de una página o sección -->
+<footer></footer> 	<!-- Pie de página o sección -->
+<main></main> <!-- Contenido principal de la página -->
+<section></section> <!-- Agrupa contenido relacionado -->
+<article></article> <!-- Contenido independiente (blogs, noticias, etc.) -->
+<nav></nav> <!-- 	Menú de navegación -->
+<aside></aside> <!-- Contenido lateral o complementario -->
+
+<!-- Ejemplo de como usar -->
+  <!-- Cabecera de la página -->
+  <header>
+    <h1>Mi sitio web personal</h1>
+    <nav>
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#articulos">Artículos</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Contenido principal -->
+  <main>
+    
+    <!-- Sección de bienvenida -->
+    <section id="inicio">
+      <h2>Bienvenidos</h2>
+      <p>Este es un sitio de prueba hecho con HTML5.</p>
+    </section>
+
+    <!-- Sección de artículos -->
+    <section id="articulos">
+      <h2>Artículos recientes</h2>
+
+      <article>
+        <h3>Mi primer artículo</h3>
+        <p>Publicado el <span>10 de abril de 2025</span></p>
+        <p>Contenido del artículo...</p>
+      </article>
+
+      <article>
+        <h3>Otro artículo</h3>
+        <p>Publicado el <span>9 de abril de 2025</span></p>
+        <p>Más contenido interesante...</p>
+      </article>
+    </section>
+
+  </main>
+
+  <!-- Contenido complementario, como links externos o noticias -->
+  <aside>
+    <h3>Noticias destacadas</h3>
+    <ul>
+      <li><a href="#">HTML5 está en auge</a></li>
+      <li><a href="#">Consejos para programadores</a></li>
+    </ul>
+  </aside>
+<!-- Textos e imágenes -->
+<h1></h1> <!-- 	Encabezados (desde 1 a 6), siendo <h1> el más importante. -->
+<p></p> <!-- Párrafo -->
+<img> <!-- 	Imagen: <img src="foto.jpg" alt="Descripción"> -->
+
