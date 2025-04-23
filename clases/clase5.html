@@ -69,18 +69,25 @@ const parrafos = document.querySelectorAll("p");
 
  <!-- appendChild(elemento) -->
  document.body.appendChild(nuevoDiv);
+ <!-- Agrega un elemento dentro de otro (lo pone al final). -->
 
  <!-- removeChild(elemento) -->
  document.body.removeChild(nuevoDiv);
+ <!-- Elimina un hijo de un elemento. -->
 
  <!-- setAttribute("nombre", "valor") -->
  nuevoDiv.setAttribute("id", "caja");
+ <!-- Agrega o modifica un atributo de un elemento. -->
 
  <!-- removeAttribute("nombre") -->
  nuevoDiv.removeAttribute("id");
+ <!--Quita un atributo.  -->
 
  <!-- addEventListener("evento", función) -->
  const boton = document.getElementById("miBoton");
  boton.addEventListener("click", function() {
    alert("¡Hiciste click!");
  });
+ <!-- Escucha un evento (como click, submit, input, etc.)
+   y ejecuta una función cuando pasa. -->
+

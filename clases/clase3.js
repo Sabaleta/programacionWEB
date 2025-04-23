@@ -29,7 +29,7 @@ function duplicar(a){
 /***********************************/
 function dejarPasar (edad, acompaniado){
     if (edad >= 18 || acompaniado === true){
-            return ('Puede pasar')
+        return ('Puede pasar')
     }else if (acompaniado === false){
         return ('No puede pasar')
     }else{
