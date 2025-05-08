@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador dinámico de tabla</title>
+</head>
+<body>
+    <form id="formulario">
+     <label>
+        Nombre:
+        <input type="text" id="nombre"> 
+     </label> <br> <br>
+     
+    <label>
+        Edad:
+        <input type="number" id="edad">
+    </label> <br> <br>
+
+    <label>
+        Carrera:
+        <input type="text" id="carrera">
+    </label> <br> <br>
+    <button type="submit">Enviar</button>
+    </form> <br> <br>
+
+    <!-- Tablita -->
+    <table id="tabla">
+        <!--Table header: th -->
+          <th>Nombre</th> <!-- Table header -->
+          <th>Edad</th>
+          <th>Carrera</th>
+        </tr> <!-- Table row -->
+        <tr>
+          <td>Dato</td>
+          <td>Dato</td>
+          <td>Dato</td> <!-- Table data -->
+          <td><button id="eliminar">Eliminar</button></td>
+        </tr>
+      </table>
+      <script src="script2.js"></script>
+</body>
+</html>
