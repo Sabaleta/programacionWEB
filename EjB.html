@@ -1,0 +1,60 @@
+<!-- Registro de nombres -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <!-- Esta línea fuerza a Internet Explorer (IE) a usar el modo de renderizado 
+ más moderno disponible, en lugar de caer en modos antiguos por compatibilidad. -->
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Registro de nombres</title>
+
+ <!-- Body -->
+  <body>
+    <h2>Formulario</h2>
+    <form id="formulario">
+
+        <label>
+            Nombre:
+            <input type='text' id="nombre">
+        </label>
+        <br> <br> <br>
+        <button type="submit">Enviar</button>
+    </form>
+    <!-- Lista de nombres -->
+     <h2>Lista de nombres</h2>
+    <ul  id='lista'>
+    <button id="vaciar">Vaciar lista</button>
+    <li>Nombre 1</li>
+    <br>
+    </ul>
+    <script>
+    // 1) Función para agregar valor del form a lista.
+        document.getElementById('formulario').addEventListener('submit', function (e){
+            e.preventDefault();
+            //obtengo el nombre y la lista.
+            const nombre= document.getElementById('nombre').value.trim()
+            const lista=document.getElementById('lista')
+            //Creo elemento de la lista y guardo el nuevo nombre ahí
+            const nuevoItem=document.createElement('li')
+            const br=document.createElement('br')
+            nuevoItem.textContent=nombre
+            //Appendeo el nuevo item a la lista
+            lista.appendChild(nuevoItem)
+            lista.appendChild(br)
+            //Reseteo form
+            document.getElementById('nombre').value = '';
+        })
+    // 2) Función para eliminar nombres.
+    document.getElementById('vaciar').addEventListener('click',function(e){
+        e.preventDefault();
+        //Le agrego la función de confirm.
+        const confirmar = confirm("¿Está seguro que quiere vaciar la lista?");
+        if (confirmar) {
+        const items = document.querySelectorAll('#lista li');
+        items.forEach(item => {
+            item.remove()});
+        }    
+    });
+    </script>
+  </body>

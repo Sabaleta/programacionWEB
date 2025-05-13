@@ -1,0 +1,159 @@
+<!--Se realizaráu un código para armar un carro de compras por lo que dure el --> 
+<!-- código coriendo -->
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+ <meta charset="UTF-8">
+
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <!-- Esta línea fuerza a Internet Explorer (IE) a usar el modo de renderizado 
+ más moderno disponible, en lugar de caer en modos antiguos por compatibilidad. -->
+
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+ <!-- name="viewport" indica que se está configurando 
+  la ventana de visualización (el "viewport").
+content="width=device-width" ajusta el ancho de la
+ página al ancho real del dispositivo.
+initial-scale=1.0 establece el nivel de zoom inicial. -->
+ <title>Lista de Compras</title>
+
+</head>
+
+<body>
+
+ <header>
+
+  <h1>Lista de Compras</h1>
+
+ </header> 
+
+ <section>
+
+  <form id="formulario">
+
+   <input type="text" id="nombreItem" placeholder="Nombre del item">
+<!-- placeholder sirve para que el la casilla donde se va a escribir aparezca
+ escrito Nombre del item -->
+   <br>
+
+   <input type="number" id="cantidadItem" placeholder="Cantidad del item" min="1" value = "1">
+<!-- El min 1 es una reestricción bastante elemental de cantidades. evita que con la
+ flechita yo baje a negativos o cero. Sin embargo me deja escribir .3 o 0 con el teclado. -->
+    
+
+   <button type="button" id="btnAgregar"> Agregar Item</button>
+
+  </form>
+
+ </section>
+
+  
+
+ <section>
+
+  <h2>Mis compras:</h2>
+
+  <ul id="listaCompras"></ul>
+
+ </section>
+
+
+
+<script>
+
+let listaItems = [];
+
+
+
+document.querySelector("#btnAgregar").addEventListener("click", agregarItem);
+
+
+
+function agregarItem() {
+
+ const nombreInput = document.querySelector("#nombreItem");
+
+ const cantidadInput = document.querySelector("#cantidadItem");
+
+  
+
+ const nombre = nombreInput.value.trim();
+
+ const cantidad = cantidadInput.value.trim();
+
+  
+
+ const item = {nombre, cantidad};
+//  Estás usando una forma abreviada
+//  para crear un objeto donde las claves se llaman igual que las variables.
+
+
+ listaItems.push(item);
+
+ nombreInput.value="";
+
+ cantidadInput.value="1";
+
+  
+
+ mostrarLista();
+
+}
+
+
+
+function eliminarItem(index){
+
+ listaItems.splice(index, 1); //Elimina el item en la pos indicada
+
+ mostrarLista();
+
+}
+
+
+
+function mostrarLista(){
+
+ const lista = document.querySelector("#listaCompras");
+
+ lista.innerHTML = "";
+
+  
+
+ for (let i=0; i < listaItems.length; i++){
+
+  let item = listaItems[i];
+
+  let li = document.createElement("li"); //creamos nuevo elemento list items
+
+  li.textContent = `${item.nombre} - Cantidad: ${item.cantidad}`;
+
+   
+
+  const btnEliminar = document.createElement("button");
+
+  btnEliminar.textContent = "Eliminar";
+
+  btnEliminar.addEventListener("click", function () {
+
+   eliminarItem(i);
+
+  });
+
+  li.appendChild(btnEliminar);
+
+  lista.appendChild(li);
+
+ }
+
+}
+
+</script>
+
+</body>
+
+</html>

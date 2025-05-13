@@ -1,0 +1,48 @@
+<!-- Ejercicio C: Contador con Botones
+Ejercicio C: Contador con Botones
+Instrucciones:
+Crear una página con un número en pantalla que comienza en 0.
+Incluir tres botones: Aumentar, Disminuir y Reiniciar.
+Al hacer clic en cada botón, se actualiza el valor mostrado.
+Todo debe ser visible desde el HTML sin estilos. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador con botones</title>
+</head>
+<body>
+    <h2>Display</h2><br><br><br>
+    <h1 id="contador">0</h1><br><br><br>
+
+    <!-- Botones -->
+    <table>
+        <tr>
+            <td><button id="aumentar">Aumentar</button></td>
+            <td><button id="disminuir">Disminuir</button></td>
+            <td><button id="reiniciar">Reiniciar</button></td>
+        </tr>
+    </table>
+
+    <script>
+        const contador = document.querySelector('#contador');
+
+        // Función para sumar
+        document.querySelector("#aumentar").addEventListener("click", () => {
+            contador.textContent = parseInt(contador.textContent) + 1;
+        });
+
+        // Función para restar
+        document.querySelector('#disminuir').addEventListener('click', () => {
+            contador.textContent = parseInt(contador.textContent) - 1;
+        });
+
+        // Función para reiniciar
+        document.querySelector('#reiniciar').addEventListener('click', () => {
+            contador.textContent = 0;
+        });
+    </script>
+</body>
+</html>
