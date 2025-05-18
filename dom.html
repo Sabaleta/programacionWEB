@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DOM</title>
+</head>
+<body>
+  <h1>Título</h1>
+
+  <!-- Información oculta en formato JSON -->
+  <div id="datos" style="display:none">
+    [{"nombre": "lucas", "apellido": "abella"},{"nombre":"josefina","apellido":"Ramirez"}]
+  </div>
+  <!-- Botón para disparar la lectura -->
+  <button id="mostrar">Mostrar datos</button>
+  <button id="actualizar">Nuevo Dato</button>
+  <button id="borrar">Borrar Dato</button>
+  <h3>Región de display</h3>
+  <div id="display">
+    <table id="tablita">
+        <thead>
+            <th>Nombre </th>
+            <th>Apellido</th>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+  </div>
+  <script>
+
+
+New
+
+Share
+
+
+Code
+
+Copy
+
+// Show Data
+document.querySelector('#mostrar').addEventListener('click', function(e) {
+  e.preventDefault();
+  // Obtener texto del div y convertirlo a objeto
+  const datosTexto = document.querySelector('#datos').textContent.trim();
+  const datos = JSON.parse(datosTexto); // Extraigo datos (en array de obj)
+  const tabla = document.querySelector('#tablita tbody'); 
+  tabla.innerHTML = '';
+  for (let i = 0; i < datos.length; i++) { // Itero con la cantidad de obj
+    const row = document.createElement('tr');
+    const d1 = document.createElement('td');
+    const d2 = document.createElement('td');
+    d1.textContent = datos[i].nombre;
+    d2.textContent = datos[i].apellido;
+    row.appendChild(d1);
+    row.appendChild(d2)}
+});
+    
+    // Add a delete button to each row
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = 'Borrar';
+    deleteButton.addEventListener('click', function() {
+      // Remove the row from the table
+      tabla.removeChild(row);})
+      // Remove the corresponding data from the JSON object
+  </script>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+    <div id="datos" style="display:none">
+        [{"id":17,"nombre":"shimmy","tipo":"gato","edad":13,"vacunado":true}]
+    </div>
+
+    <!-- Tabla -->
+    <button id="actualizar">Actualizar tabla</button> 
+    <table id="tablita">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Edad</th>
+                <th>Vacunado</th>
+                <th>Eliminar</th>
+                <th>Editar</th>
+            </tr>
+        </thead> 
+        <tbody id="body"></tbody>       
+    </table>
+
+    <!-- Formulario -->
+    <form id="formulario">
+        <label>ID
+            <input type='number' id="id" placeholder="número de id">
+        </label><br><br>
+
+        <label>Nombre
+            <input type='text' id="nombre" placeholder="nombre">
+        </label><br><br>
+
+        <label>Tipo
+            <input type='text' id="tipo" placeholder="tipo de animal">
+        </label><br><br>
+
+        <label>Edad
+            <input type='number' id="edad" placeholder="Edad">
+        </label><br><br>
+
+        <p>¿Está vacunado?</p>
+        <label>
+            <input type='radio' name="vacunado" value="true"> Sí
+        </label><br>
+        <label>
+            <input type='radio' name="vacunado" value="false"> No
+        </label><br><br>
+
+        <button type="submit" id="submitbut">Enviar</button> 
+    </form>
+
+<script>
+    // Actualizar tabla
+    document.querySelector('#actualizar').addEventListener('click', function(e) {
+        e.preventDefault();
+
+
+        const div = document.querySelector('#datos');
+        let arr = JSON.parse(div.textContent.trim());
+
+        const tbody = document.querySelector('#body');
+        tbody.innerHTML = '';
+
+        for (let i = 0; i < arr.length; i++) {
+            const row = document.createElement('tr');
+
+            //
+            const id = document.createElement('td');
+            id.innerHTML = arr[i].id;
+            row.appendChild(id);
+
+            const nombre = document.createElement('td');
+            nombre.innerHTML = arr[i].nombre;
+            row.appendChild(nombre);
+
+            const tipo = document.createElement('td');
+            tipo.innerHTML = arr[i].tipo;
+            row.appendChild(tipo);
+
+            const edad = document.createElement('td');
+            edad.innerHTML = arr[i].edad;
+            row.appendChild(edad);
+
+            const vacunado = document.createElement('td');
+            vacunado.innerHTML = arr[i].vacunado ? "Sí" : "No";
+            row.appendChild(vacunado);
+
+            // Botón editar
+            const editar = document.createElement('td');
+            const botEditar = document.createElement('button');
+            botEditar.innerHTML = 'Editar';
+            //Le pongo al dataset del botón el id de la mascota
+            botEditar.dataset.id = arr[i].id;
+            editar.appendChild(botEditar);
+            row.appendChild(editar);
+
+
+            botEditar.addEventListener('click', function () {
+                const idBuscado = parseInt(this.dataset.id);
+                //This hace referencia al botón clickeado
+                const mascota = arr.find(item => item.id === idBuscado);
+                
+                // Cargar valores al formulario
+                document.getElementById('id').value = mascota.id;
+                document.getElementById('nombre').value = mascota.nombre;
+                document.getElementById('tipo').value = mascota.tipo;
+                document.getElementById('edad').value = mascota.edad;
+                document.querySelector('input[name="vacunado"][value="${mascota.vacunado}"]').checked = true;
+                //Checked
+
+                // Eliminar del array para reemplazar con la nueva versión cuando se edite
+                const nuevoArr = arr.filter(item => item.id !== idBuscado);
+                document.querySelector('#datos').textContent = JSON.stringify(nuevoArr);
+
+            });
+
+            // Botón eliminar
+            const eliminar = document.createElement('td');
+            const botEliminar = document.createElement('button');
+            botEliminar.innerHTML = 'Eliminar';
+            botEliminar.dataset.id = arr[i].id;
+            eliminar.appendChild(botEliminar);
+            row.appendChild(eliminar);
+
+            botEliminar.addEventListener('click', function () {
+                const idBuscado = parseInt(this.dataset.id);
+                //filter arma un array con todos los ítems que cumplen con la condición exigida,
+                // por lo que rearmo el array sin la fila del ítem seleccionado.
+                arr = arr.filter(item => item.id !== idBuscado);
+                document.querySelector('#datos').textContent = JSON.stringify(arr);
+                document.querySelector('#actualizar').click();
+            });
+            tbody.appendChild(row);
+        }
+    });
+
+    // Agregar o actualizar mascota
+    document.getElementById('submitbut').addEventListener('click', function(e) {
+        e.preventDefault();
+        const id0 = document.getElementById('id').value
+        //Valido que el id no me quede vacío pq sino se arma lío.
+        if(id0 ==='') {
+            alert('por favor, completa el campo id.');
+            return;
+        }
+
+        //Guardo los datos ingresados en el formulario en las variables correspondientes
+        const id = parseInt(id0);
+        const nombre = document.getElementById('nombre').value.trim();
+        const tipo = document.getElementById('tipo').value.trim();
+        const edad = parseInt(document.getElementById('edad').value);
+        const vacunado = document.querySelector('input[name="vacunado"]:checked')?.value === 'true';
+
+        const obj = { id, nombre, tipo, edad, vacunado };
+
+        let arr = JSON.parse(document.querySelector('#datos').textContent.trim());
+        arr.push(obj);
+        document.querySelector('#datos').textContent = JSON.stringify(arr);
+
+        document.getElementById('formulario').reset();
+        document.querySelector('#actualizar').click();
+    });
+</script>
+
+</body>
+</html>
