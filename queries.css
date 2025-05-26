@@ -1,0 +1,32 @@
+/* Mobile first: la base de internet se ingresa a través de celulares. */
+/* A las p[aginas web se ingresa 80% a través de celulares */
+/* Para el tp hay que hacer 2 formatos de la página. para teléfonos y para monitores. */
+@media screen and (max-width:600px) {
+    body{
+        background-color: lightblue;
+    }
+    #imagenCabecera {
+        display: none
+    }
+}
+
+@media screen and (min-width:601px) {
+    body {
+        background-color: lightgreen;
+    }
+    display inline
+    }
+
+/* src="http://placehold.co/500"
+alt="" */
+
+/* Bootstrap: framework de CSS */
+/* RTFM: read the fucking manual */
+/* Tengo que bajar bootstrap */
+/* Lorem (Html) */
+/* Get Bootstrap.com */
+
+/* Grilla de bootstrap */
+/* En vez de usar queries puedo usar la grilla de bootstrap */
+ /* El ancho de la grilla tiene 12 unidades.  */
+ /* Z index */
